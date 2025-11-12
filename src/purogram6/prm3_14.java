@@ -19,8 +19,9 @@ public class prm3_14 {
 
 	public static void countNum(int inputCountNum) {
 		int i = 1;
+		int j = 1;
 		while (i <= inputCountNum) {
-			int j = 0;
+			j = 0;
 			while (j < i) {
 				System.out.print(i);
 				j++;

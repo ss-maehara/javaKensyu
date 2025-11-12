@@ -8,18 +8,18 @@ public class prm3_3 {
 	}
 
 	public static void program3_3() {
-		int num = 0;
 
-		countNum(num);
+		countNum();
 		System.out.println("\n");
-		whileCountNum(num);
+		whileCountNum();
 	}
 
 	/**
 	 * 10～20までカウントし出力する。
 	 * @param numCount 数字
 	 */
-	public static void countNum(int numCount) {
+	public static void countNum() {
+		int numCount;
 		for (numCount = 10; numCount <= 20; numCount++) {
 			System.out.println(numCount);
 
@@ -28,9 +28,12 @@ public class prm3_3 {
 	}
 
 	//whileバージョン
-	public static void whileCountNum(int whileNumCount) {
-		for (whileNumCount = 10; whileNumCount <= 20; whileNumCount++) {
+	public static void whileCountNum() {
+		int whileNumCount;
+		whileNumCount = 10;
+		while (whileNumCount <= 20) {
 			System.out.println(whileNumCount);
+			whileNumCount++;
 
 		}
 	}

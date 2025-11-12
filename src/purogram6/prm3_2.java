@@ -17,6 +17,7 @@ public class prm3_2 {
 		String output = "";
 
 		//入力された文字列を判定して繰り返し回数を決める。
+
 		switch (inputAnimalName) {
 		case "わん":
 			count = 11;

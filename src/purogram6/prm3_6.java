@@ -21,9 +21,9 @@ public class prm3_6 {
 	//whileでおこなう掛け算
 	public static void multiplication() {
 		int i = 1;
-
+		int j = 1;
 		while (i <= 9) {
-			int j = 1;
+			j = 1;
 			while (j <= 9) {
 				System.out.print(i * j + "\t");
 				j++;

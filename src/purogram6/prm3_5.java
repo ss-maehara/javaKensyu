@@ -17,6 +17,7 @@ public class prm3_5 {
 		String inputCatJude = "";
 		String inputNotCat = "";
 
+		//if文
 		switch (inputAnimalName) {
 		case "ねこ":
 			inputCatJude = inputAnimalName;

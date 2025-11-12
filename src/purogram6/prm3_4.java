@@ -18,6 +18,14 @@ public class prm3_4 {
 		System.out.println(outputReverse);
 		//入力した文字列を5回出力
 		usuallyString(inputString);
+
+		System.out.println();
+		// 入力した文字列を反転While
+		String WhileUutputReverse = WhileStringOutput(inputString);
+		System.out.println(outputReverse);
+
+		////入力した文字列を5回出力While
+		WhileUsuallyString(inputString);
 	}
 
 	/**
@@ -39,8 +47,27 @@ public class prm3_4 {
 	 * @param usually 入力した文字列
 	 */
 	public static void usuallyString(String usually) {
-		for (int i = 0; i <= 5; i++) {
+		for (int i = 0; i < 5; i++) {
 			System.out.println(usually);
+		}
+	}
+
+	//入力した文字列を反転して出力whileVer
+	public static String WhileStringOutput(String inputString) {
+		String reverse = "";
+		int i = inputString.length() - 1;
+		while (i >= 0) {
+			reverse += inputString.charAt(i);
+			i--;
+		}
+		return reverse;
+	}
+
+	public static void WhileUsuallyString(String usually) {
+		int i = 0;
+		while (i < 5) {
+			System.out.println(usually);
+			i++;
 		}
 	}
 }

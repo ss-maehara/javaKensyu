@@ -9,6 +9,7 @@ public class prm3_7 {
 
 	public static void program3_7() {
 		evenNumber();
+		System.out.println();
 		whileEvenNumber();
 	}
 
@@ -18,7 +19,7 @@ public class prm3_7 {
 				System.out.print(i);
 			}
 		}
-		System.out.println();
+
 	}
 
 	public static void whileEvenNumber() {

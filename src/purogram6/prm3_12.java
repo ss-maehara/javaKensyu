@@ -26,7 +26,7 @@ public class prm3_12 {
 	}
 
 	public static void forHandjudg(String inputHand, Scanner scanner) {
-		inputHand = scanner.next();
+
 		for (;;) {
 			if (inputHand.equals("グー") || inputHand.equals("チョキ") || inputHand.equals("パー")) {
 				break;
