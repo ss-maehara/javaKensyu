@@ -19,10 +19,11 @@ public class prm4_12 {
 		int inputNum2 = scanner.nextInt();
 		// 計算を行う関数
 		int result = calculation(inputNum1, inputNum2);
+		String stringResult = String.valueOf(result);
 		// 表示を行う関数
-		String resultSumOutput = OutputResult(result);
+		OutputResult(stringResult);
 
-		System.out.println("出力3:" + resultSumOutput);
+		//System.out.println("出力3:" + resultSumOutput);
 	}
 
 	/**
@@ -37,13 +38,11 @@ public class prm4_12 {
 	}
 
 	/**
-	 * 表示をおこなう関数
+	 * 表示をおこなう関数sysout
 	 * @param suminput
 	 * @return 表示する文字列
 	 */
-	public static String OutputResult(int suminput) {
-		String stringResult = String.valueOf(suminput);
-		return stringResult;
-
+	public static void OutputResult(String suminput) {
+		System.out.println("出力3:" + suminput);
 	}
 }

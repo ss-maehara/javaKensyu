@@ -3,11 +3,11 @@ package purogram7;
 import java.util.Random;
 import java.util.Scanner;
 
-public class prm4_17 {
+public class prm4_17remeik {
 
 	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
 		program4_17();
-
 	}
 
 	public static void program4_17() {
@@ -15,29 +15,14 @@ public class prm4_17 {
 		Random random = new Random();
 		int cpuHand = random.nextInt(3) + 1;
 
-		int inputHand = 0;
-		while (true) {
-			try {
-				System.out.println("じゃんけんを行います。");
-				System.out.println("じゃんけん！\n 1:グー　2:チョキ　3:パー");
+		System.out.println("じゃんけんを行います。");
+		System.out.println("じゃんけん！\n 1:グー　2:チョキ　3:パー");
 
-				Scanner scanner = new Scanner(System.in);
-				inputHand = scanner.nextInt();
-
-			} catch (Exception e) {
-				System.out.println("入力された手が間違っています。");
-				continue; // 戻る
-			}
-			//入力された値が1～3を入力するまで繰り返す処理
-			if (inputHand < 1 || inputHand > 3) {
-				System.out.println("入力された手が間違っています。");
-				continue; // 戻る
-			}
-			break;
-
-		}
 		//userの入力
 		String userInputStrHand = userInput();
+
+		// int に変換
+		int inputHand = Integer.parseInt(userInputStrHand);
 
 		//プレイヤー側のハンド
 		String playerrockPaperHend = rockPaper(inputHand);
@@ -81,12 +66,27 @@ public class prm4_17 {
 	}
 
 	//if文追記
+	// 入力された値が数字かどうか判定
 	public static boolean isNumericalJudgment(String inputStr) {
-		return true;
+		try {
+			Integer.parseInt(inputStr);
+			return true;
+		} catch (NumberFormatException e) {
+			System.out.println("入力された手が間違っています。");
+			return false;
+		}
 	}
 
+	// 入力された値が 1〜3 の範囲かどうか判定
 	public static boolean isRangeSpecification(String inputStr) {
-		return true;
+		int num = Integer.parseInt(inputStr);
+
+		if (num >= 1 && num <= 3) {
+			return true;
+		} else {
+			System.out.println("入力された手が間違っています。");
+			return false;
+		}
 	}
 
 	/**11月12日
