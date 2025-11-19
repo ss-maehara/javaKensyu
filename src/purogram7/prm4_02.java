@@ -17,6 +17,8 @@ public class prm4_02 {
 		output(Str);
 	}
 
+	//オーバーロード
+	//11同じ名前だけどひきすうがちがうから行ける
 	public static void output(int Val) {
 		System.out.println(Val);
 	}

@@ -19,14 +19,13 @@ public class prm3_22_remake {
 		System.out.print("サイコロを回す回数を指定してください:");
 		int inputNum = scanner.nextInt();
 
-		Random random = new Random();
 		//int randomInt = random.nextInt(6) + 1;
 		//プレイヤーの出た目
 		int[] rollsPlayersA = new int[inputNum];
 		int[] rollsPlayersB = new int[inputNum];
 		int[] rollsPlayersC = new int[inputNum];
 		//サイコロを振る
-		daice(inputNum, rollsPlayersA, rollsPlayersB, rollsPlayersC, random);
+		daice(inputNum, rollsPlayersA, rollsPlayersB, rollsPlayersC);
 		//出目が奇数なら+1、偶数なら-1、6の倍数なら0にする
 		evenOddMultiple(positions, rollsPlayersA);
 		evenOddMultiple(positions, rollsPlayersB);
@@ -45,10 +44,9 @@ public class prm3_22_remake {
 	 * @param playerDaiceA プレイヤーAの出目
 	 * @param playerDaiceB プレイヤーBの出目
 	 * @param playerDaiceC プレイヤーCの出目
-	 * @param random 1～6の数字をランダムに決める
 	 */
-	public static void daice(int inputNum, int[] playerDaiceA, int[] playerDaiceB, int[] playerDaiceC, Random random) {
-
+	public static void daice(int inputNum, int[] playerDaiceA, int[] playerDaiceB, int[] playerDaiceC) {
+		Random random = new Random();
 		for (int i = 0; i < inputNum; i++) {
 			playerDaiceA[i] = random.nextInt(6) + 1;
 			playerDaiceB[i] = random.nextInt(6) + 1;
@@ -102,18 +100,28 @@ public class prm3_22_remake {
 
 		for (int j = 0; j < positions.length; j++) {
 			for (int i = 0; i < rollsPlayers.length; i++) {
-				if (rollsPlayers[i] % 6 == 0) {
-					positions[j] *= 0;
+				/*if (rollsPlayers[i] % 6 == 0) {
+					positions[j] = 0;
 				} else if (rollsPlayers[i] % 2 == 0) {
-					positions[j] = rollsPlayers[i] -= 1;
+					positions[j] = rollsPlayers[i] - 1;
 				} else {
 					rollsPlayers[i] += 1;
 					if (rollsPlayers[i] % 6 == 0) {
-						positions[j] *= 0;
+						positions[j] = 0;
 					}
 					positions[j] += rollsPlayers[i];
-
+				
+				}*/
+				if (rollsPlayers[i] % 6 == 0) {
+					positions[j] = 0;
+				} else if (rollsPlayers[i] % 2 == 0) {
+					positions[j] = rollsPlayers[i] - 1;
+				} else if (rollsPlayers[i] % 6 == 0) {
+					positions[j] = 0;
+				} else {
+					rollsPlayers[i] += 1;
 				}
+				positions[j] += rollsPlayers[i];
 			}
 
 		}

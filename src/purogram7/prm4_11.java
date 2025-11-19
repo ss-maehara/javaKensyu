@@ -32,7 +32,7 @@ public class prm4_11 {
 	/**11月11日
 	 * 計算方法表示
 	 * @param calculationSelection
-	 * @return
+	 * @return 記号
 	 */
 	public static String calculationMethod(int calculationSelection) {
 
@@ -46,7 +46,7 @@ public class prm4_11 {
 		case 4:
 			return "/";
 		default:
-			return "1～4までの数字を入力してください";
+			return "?";
 		}
 
 	}

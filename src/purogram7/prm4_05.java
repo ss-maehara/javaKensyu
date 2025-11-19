@@ -13,16 +13,25 @@ public class prm4_05 {
 		Scanner scanner = new Scanner(System.in);
 		int inputNum = scanner.nextInt();
 
-		String str = checkDivisible(inputNum);
-		System.out.println(str);
+		boolean isNumJudge = isCheckDivisible(inputNum);
+		output(isNumJudge);
 
 	}
 
-	public static String checkDivisible(int num) {
-		if (num % 5 == 0) {
-			return "割り切れる";
+	public static void output(boolean isNumJudge) {
+		if (isNumJudge) {
+			System.out.println("割り切れる");
 		} else {
-			return "割り切れない";
+			System.out.println("割り切れない");
+		}
+	}
+
+	//turefale
+	public static boolean isCheckDivisible(int num) {
+		if (num % 5 == 0) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 }

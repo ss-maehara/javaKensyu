@@ -15,11 +15,12 @@ public class prm4_14 {
 		//入力判定をおこなう
 		boolean inputJudge = inputJudge(inputCharacter);
 		//出力内容を判定
-		String outputJudge = outputJudge(inputCharacter, inputJudge);
-		outputresult(outputJudge);
+		int outputJudge = inputCatNukoJudge(inputCharacter);
+		String outputResult = outputJuge(outputJudge);
+		outputresult(outputResult);
 	}
 
-	/**11月12日
+	/**11月12日A
 	 * 入力する関数
 	 * @return 入力した文字列
 	 */
@@ -44,25 +45,51 @@ public class prm4_14 {
 	}
 
 	/**
-	 * 出力内容を判別する関数
+	 * 入力判定がTrueか判定し出力内容を判別する関数
 	 * @param inputCharacter
 	 * @param inputJudge
 	 * @return 表示内容
 	 */
-	public static String outputJudge(String inputCharacter, boolean inputJudge) {
-		if (inputJudge) {
-			if (inputCharacter.contains("ねこ")) {
-				return "ねこさま！";
+	//4-13参照
+	/*	public static String outputJudge(String inputCharacter, boolean inputJudge) {
+			if (inputJudge) {
+				if (inputCharacter.contains("ねこ")) {
+					return "ねこさま！";
+				} else {
+					return "ぬこさま！";
+				}
 			} else {
-				return "ぬこさま！";
+				return "おかえりください";
 			}
+	
+		}*/
+	public static int inputCatNukoJudge(String inputCharacter) {
+		if (inputCharacter.contains("ねこ")) {
+			return 1;
+
+		} else if (inputCharacter.contains("ぬこ")) {
+			return 2;
+
 		} else {
+			return 3;
+		}
+	}
+
+	public static String outputJuge(int outputJudge) {
+		switch (outputJudge) {
+		case 1:
+			return "ねこさま!";
+		case 2:
+			return "ぬこさま!";
+		case 3:
 			return "おかえりください";
+		default:
+			return "エラー";
 		}
 
 	}
 
-	/**
+	/**D
 	 * 出力
 	 * @param outputJudge
 	 */
