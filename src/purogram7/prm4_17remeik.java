@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class prm4_17remeik {
 
 	public static void main(String[] args) {
-		// TODO 自動生成されたメソッド・スタブ
 		program4_17();
 	}
 
@@ -16,7 +15,7 @@ public class prm4_17remeik {
 		int cpuHand = random.nextInt(3) + 1;
 
 		System.out.println("じゃんけんを行います。");
-		System.out.println("じゃんけん！\n 1:グー　2:チョキ　3:パー");
+		System.out.println("じゃんけん！\\n 1:グー　2:チョキ　3:パー");
 
 		//userの入力
 		String userInputStrHand = userInput();
@@ -40,6 +39,7 @@ public class prm4_17remeik {
 		String inputStr = "";
 		boolean isInputCorrect = false;
 		Scanner scanner = new Scanner(System.in);
+		int errNum = 0;
 		do {
 			try {
 				System.out.print("入力:");
@@ -49,32 +49,53 @@ public class prm4_17remeik {
 				//入力された値が数字かどうか
 				isInputCorrect = isNumericalJudgment(inputStr);
 				if (isInputCorrect == false) {
+					errNum = 1;
+					//エラーを表示させる
+					errorMessage(errNum);
 					continue;
 				}
 				//1以上3以下
 				isInputCorrect = isRangeSpecification(inputStr);
 				if (isInputCorrect == false) {
+					errNum = 2;
+					//エラーを表示させる
+					errorMessage(errNum);
 					continue;
 				}
 
 			} catch (Exception e) {
-				System.out.println("入力された手が間違っています。");
+				errNum = 0;
+				//エラーを表示させる。
+				errorMessage(errNum);
 			}
 		} while (isInputCorrect == false);
 
 		return inputStr;
 	}
 
-	//if文追記
+	//trycatchではなくif分にする
 	// 入力された値が数字かどうか判定
-	public static boolean isNumericalJudgment(String inputStr) {
-		try {
-			Integer.parseInt(inputStr);
-			return true;
-		} catch (NumberFormatException e) {
-			System.out.println("入力された手が間違っています。");
-			return false;
+	public static boolean isNumericalJudgment(String str) {
+		if (str == null || str.isEmpty()) {
+			return false; // nullや空文字は数字ではない
 		}
+
+		int start = 0;
+		if (str.charAt(0) == '-') { // マイナスの可能性
+			if (str.length() == 1) {
+				return false; // "-" だけは数字ではない
+			}
+			start = 1;
+		}
+
+		for (int i = start; i < str.length(); i++) {
+			char c = str.charAt(i);
+			if (c < '0' || c > '9') { // 0〜9以外は数字ではない
+				return false;
+			}
+		}
+
+		return true; // 全て数字
 	}
 
 	// 入力された値が 1〜3 の範囲かどうか判定
@@ -84,9 +105,29 @@ public class prm4_17remeik {
 		if (num >= 1 && num <= 3) {
 			return true;
 		} else {
-			System.out.println("入力された手が間違っています。");
+			//System.out.println("入力された手が間違っています。");
 			return false;
 		}
+	}
+
+	/**11月19日
+	 * エラーを表示する
+	 * @param errNum エラーナンバー
+	 */
+	public static void errorMessage(int errNum) {
+
+		switch (errNum) {
+		case 1:
+			System.out.println("数字を入力してください。");
+			break;
+		case 2:
+			System.out.println("1～3を入力してください。");
+			break;
+		default:
+			System.out.println("入力された手が間違っています。");
+			break;
+		}
+
 	}
 
 	/**11月12日
