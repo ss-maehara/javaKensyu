@@ -1,55 +1,32 @@
+/*
 package purogram6;
 
 import java.util.Random;
 import java.util.Scanner;
 
-public class prm3_22_e {
+public class f3_22 {
 
 	public static void main(String[] args) {
-		program3_22();
+		// TODO 自動生成されたメソッド・スタブ
 
 	}
 
 	public static void program3_22() {
-		String nameA = "A", nameB = "B", nameC = "C";
+
 		//サイコロを振る回数を入力する。
 		int inputNum = inputUser();
 
 		//プレイヤーの出た目
 		int[] rollsPlayersA = new int[inputNum];
-		int diceA = 0;
-		int firstJudgmentA = 0;
-
 		int[] rollsPlayersB = new int[inputNum];
-		int diceB = 0;
-		int firstJudgmentB = 0;
-
 		int[] rollsPlayersC = new int[inputNum];
-		int diceC = 0;
-		int firstJudgmentC = 0;
 
-		for (int i = 0; i < inputNum; i++) {
-			//サイコロ出る目を決める
-			diceA = diceRoll();
-			rollsPlayersA[i] = diceA;
-			//サイコロの出目の判定
-			firstJudgmentA += dialResultJudgment(diceA);
-
-			//サイコロ出る目を決める
-			diceB = diceRoll();
-			rollsPlayersB[i] = diceB;
-			//サイコロの出目の判定
-			firstJudgmentB += dialResultJudgment(diceB);
-
-			//サイコロ出る目を決める
-			diceC = diceRoll();
-			rollsPlayersC[i] = diceC;
-			//サイコロの出目の判定
-			firstJudgmentC += dialResultJudgment(diceC);
-		}
-		output(rollsPlayersA, firstJudgmentA, nameA);
-		output(rollsPlayersB, firstJudgmentB, nameB);
-		output(rollsPlayersC, firstJudgmentC, nameC);
+		//サイコロ出る目を決める
+		int dice = diceRoll();
+		//サイコロの出目の判定
+		int firstJudgment = dialResultJudgment(dice);
+		//サイコロの出目と、位置を保存
+		rollSave();
 	}
 
 	public static int inputUser() {
@@ -94,6 +71,16 @@ public class prm3_22_e {
 		return true;
 	}
 
+	public static void daice(int inputNum, int[] playerDaiceA, int[] playerDaiceB, int[] playerDaiceC) {
+		Random random = new Random();
+		for (int i = 0; i < inputNum; i++) {
+			playerDaiceA[i] = random.nextInt(6) + 1;
+			playerDaiceB[i] = random.nextInt(6) + 1;
+			playerDaiceC[i] = random.nextInt(6) + 1;
+		}
+
+	}
+
 	public static int diceRoll() {
 		Random random = new Random();
 		return random.nextInt(6) + 1;
@@ -133,13 +120,17 @@ public class prm3_22_e {
 	}
 
 	//int inputNum, int dice
-	public static int[] rollSave(int inputNum, int dice, int[] rollsPlayers) {
+	public static void rollSave(int inputNum, int dice) {
+		//サイコロを振る回数を入力する。
+		int[] Savadice = new int[inputNum];
+		int[] rollsPlayersA = new int[inputNum];
+		int position = 0;
 
-		for (int i = 0; i < rollsPlayers.length; i++) {
+		for (int i = 0; i < rollsPlayersA.length; i++) {
 			//サイコロ出る目を決める
-			rollsPlayers[i] = dice;
+			rollsPlayersA[i] = dice;
+
 		}
-		return rollsPlayers;
 
 	}
 
@@ -151,12 +142,5 @@ public class prm3_22_e {
 
 	}
 
-	public static void output(int[] playerDaice, int firstJudgment, String name) {
-		System.out.print("プレイヤー" + name + "：到達マス " + firstJudgment + "サイコロ：");
-
-		for (int i = 0; i < playerDaice.length; i++) {
-			System.out.print(playerDaice[i]);
-		}
-		System.out.println();
-	}
 }
+*/
