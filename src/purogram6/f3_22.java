@@ -1,4 +1,4 @@
-/*
+
 package purogram6;
 
 import java.util.Random;
@@ -7,34 +7,87 @@ import java.util.Scanner;
 public class f3_22 {
 
 	public static void main(String[] args) {
-		// TODO 自動生成されたメソッド・スタブ
+		program3_22();
 
 	}
 
 	public static void program3_22() {
-
+		String nameA = "A", nameB = "B", nameC = "C";
 		//サイコロを振る回数を入力する。
 		int inputNum = inputUser();
 
 		//プレイヤーの出た目
+		//配列の方がいい
 		int[] rollsPlayersA = new int[inputNum];
-		int[] rollsPlayersB = new int[inputNum];
-		int[] rollsPlayersC = new int[inputNum];
+		int diceA = 0;
+		int firstJudgmentA = 0;
+		int positionA = 0;
+		int resultA = 0;
 
-		//サイコロ出る目を決める
-		int dice = diceRoll();
-		//サイコロの出目の判定
-		int firstJudgment = dialResultJudgment(dice);
-		//サイコロの出目と、位置を保存
-		rollSave();
+		int[] rollsPlayersB = new int[inputNum];
+		int diceB = 0;
+		int firstJudgmentB = 0;
+		int positionB = 0;
+		int resultB = 0;
+
+		int[] rollsPlayersC = new int[inputNum];
+		int diceC = 0;
+		int firstJudgmentC = 0;
+		int positionC = 0;
+		int resultC = 0;
+
+		for (int i = 0; i < inputNum; i++) {
+			//サイコロ出る目を決める
+			diceA = diceRoll();
+			rollsPlayersA[i] = diceA;
+			//サイコロの出目の判定結果を格納
+			//firstJudgmentA = dialResultJudgment(diceA);
+			//サイコロの出目を追加
+			positionA += diceA;
+			positionA = dialResultJudgment(positionA);
+			//6の倍数だったら場所を0にする。
+			//resultA = positionReset(firstJudgmentA, positionA);
+			//positionA = resultA;
+
+			//サイコロ出る目を決める
+			diceB = diceRoll();
+			rollsPlayersB[i] = diceB;
+			//サイコロの出目の判定
+			positionB += diceB;
+			positionB = dialResultJudgment(positionB);
+			//firstJudgmentB = dialResultJudgment(diceB);
+			//サイコロの出目を追加
+			//positionB += firstJudgmentB;
+			//6の倍数だったら場所を0にする。
+			//resultB = positionReset(firstJudgmentB, positionB);
+			//positionB = resultB;
+
+			//サイコロ出る目を決める
+			diceC = diceRoll();
+			rollsPlayersC[i] = diceC;
+			//サイコロの出目の判定
+			positionC += diceC;
+			positionC = dialResultJudgment(positionC);
+			//firstJudgmentC = dialResultJudgment(diceC);
+			//サイコロの出目を追加
+			//positionC += firstJudgmentC;
+			//6の倍数だったら場所を0にする。
+			//resultC = positionReset(firstJudgmentC, positionC);
+			//positionC = resultC;
+		}
+		output(rollsPlayersA, positionA, nameA);
+		output(rollsPlayersB, positionB, nameB);
+		output(rollsPlayersC, positionC, nameC);
 	}
 
+	//入力された値が数字であるか判定。
+	//数字ではない場合再入力させる。
 	public static int inputUser() {
 		String inputStr = "";
 		boolean isInputCorrect = false;
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("何回サイコロを振りますか?");
-		System.out.print("入力:");
+		//System.out.print("入力:");
 		do {
 			try {
 				//入力
@@ -71,35 +124,29 @@ public class f3_22 {
 		return true;
 	}
 
-	public static void daice(int inputNum, int[] playerDaiceA, int[] playerDaiceB, int[] playerDaiceC) {
-		Random random = new Random();
-		for (int i = 0; i < inputNum; i++) {
-			playerDaiceA[i] = random.nextInt(6) + 1;
-			playerDaiceB[i] = random.nextInt(6) + 1;
-			playerDaiceC[i] = random.nextInt(6) + 1;
-		}
-
-	}
-
+	//ランダム関数でサイコロの出目を決める
 	public static int diceRoll() {
 		Random random = new Random();
 		return random.nextInt(6) + 1;
 	}
 
-	//際ロコの目が6の倍数か、奇数か、偶数か判定をする。
-	public static int dialResultJudgment(int dice) {
-
+	//サイロコの目が6の倍数か、奇数か、偶数か判定をする。
+	//到着マスが奇数か偶数か6の倍数か判定
+	public static int dialResultJudgment(int positionA) {
 		int roll = 0;
-		if (dice % 6 == 0) {
-			return roll;
-		} else if (dice % 2 == 0) {
-			roll = dice - 1;
+
+		if (positionA % 6 == 0) {
+			//roll = positionA;
+			positionA = 0;
+			return positionA;
+		} else if (positionA % 2 == 0) {
+			roll = positionA - 1;
 			//return roll;
-		} else if (dice % 2 == 1) {
-			roll = dice + 1;
+		} else if (positionA % 2 == 1) {
+			roll = positionA + 1;
 			//return roll;
 		} else {
-			return dice;
+			return positionA;
 		}
 		int judgmentSecond = secondJudgment(roll);
 
@@ -111,7 +158,7 @@ public class f3_22 {
 
 		int multipleResult = 0;
 		if (roll % 6 == 0) {
-			multipleResult = 0;
+			return multipleResult;
 		} else {
 			multipleResult = roll;
 		}
@@ -119,28 +166,47 @@ public class f3_22 {
 
 	}
 
-	//int inputNum, int dice
-	public static void rollSave(int inputNum, int dice) {
-		//サイコロを振る回数を入力する。
-		int[] Savadice = new int[inputNum];
-		int[] rollsPlayersA = new int[inputNum];
-		int position = 0;
-
-		for (int i = 0; i < rollsPlayersA.length; i++) {
-			//サイコロ出る目を決める
-			rollsPlayersA[i] = dice;
-
+	//出目が6で0が合えされた時だった場合、位置を0にする
+	public static int positionReset(int firstJudgment, int position) {
+		if (firstJudgment == 0) {
+			position = 0;
+			return position;
+		} else {
+			return position;
 		}
-
 	}
 
+	/*
+	//int inputNum, int dice
+	public static int[] rollSave(int inputNum, int dice, int[] rollsPlayers) {
+	
+		for (int i = 0; i < rollsPlayers.length; i++) {
+			//サイコロ出る目を決める
+			rollsPlayers[i] = dice;
+		}
+		return rollsPlayers;
+	
+	}
+	*/
+	/*
 	public static int playerPosition(int dice) {
 		int position = 0;
 		int firstJudgment = dialResultJudgment(dice);
 		position += firstJudgment;
 		return position;
-
+	
 	}
+	*/
+	//出力
+	public static void output(int[] playerDaice, int result, String name) {
+		System.out.print("プレイヤー" + name + "：到達マス " + result + "　サイコロ：");
 
+		for (int i = 0; i < playerDaice.length; i++) {
+			System.out.print(playerDaice[i]);
+			if (i < playerDaice.length - 1) {
+				System.out.print("、");
+			}
+		}
+		System.out.println();
+	}
 }
-*/
